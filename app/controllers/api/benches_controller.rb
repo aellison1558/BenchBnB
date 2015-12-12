@@ -1,12 +1,13 @@
+
 class Api::BenchesController < ApplicationController
   def index
-    @benches = Bench.all
+    @benches = Bench.in_bounds(params[:bounds])
   end
 
   def create
     @bench = Bench.new(bench_params)
     @bench.save
-    @benches = Bench.all
+    @benches = Bench.in_bounds(params[:bounds])
     render :index
   end
 

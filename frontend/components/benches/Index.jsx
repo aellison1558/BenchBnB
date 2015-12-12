@@ -1,6 +1,7 @@
 var React = require('react'),
     BenchStore = require('../../stores/BenchStore'),
-    ApiUtil = require('../../util/ApiUtil');
+    ApiUtil = require('../../util/ApiUtil'),
+    IndexItem = require('./IndexItem');
 
 var Index = React.createClass({
   getInitialState: function() {
@@ -13,7 +14,6 @@ var Index = React.createClass({
 
   componentDidMount: function() {
     this.listeners = BenchStore.addListener(this._updateState);
-    ApiUtil.fetchBenches();
   },
 
   componentWillUnmount: function() {
@@ -24,10 +24,14 @@ var Index = React.createClass({
 
   render: function(){
     var benches = this.state.benches.map(function(bench){
-      return(<li key={bench.id}>{bench.description}</li>)
+      return(<IndexItem key={bench.id} bench={bench} />)
     })
     return(
-      <ul>{benches}</ul>
+      <ul className='index'>
+        <div className='row'>
+          {benches}
+        </div>
+      </ul>
     );
   }
 

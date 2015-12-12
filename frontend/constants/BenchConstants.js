@@ -1,5 +1,7 @@
 var BenchConstants = {
   BENCHES_RECEIVED: "BENCHES_RECEIVED",
+  BENCH_SELECTED: "BENCH_SELECTED",
+  BENCH_UNSELECTED: "BENCH_UNSELECTED"
 };
 
 module.exports = BenchConstants;

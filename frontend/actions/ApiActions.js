@@ -7,6 +7,19 @@ var ApiActions = {
       actionType: BenchConstants.BENCHES_RECEIVED,
       benches: benches
     })
+  },
+  mouseOver: function(bench) {
+    Dispatcher.dispatch({
+      actionType: BenchConstants.BENCH_SELECTED,
+      bench: bench
+    })
+  },
+
+  mouseLeave: function(bench) {
+    Dispatcher.dispatch({
+      actionType: BenchConstants.BENCH_UNSELECTED,
+      bench: bench
+    })
   }
 };
 
