@@ -23,9 +23,13 @@
 }
 
 .index{
+  margin-top: 0;
   float: left;
   font-size: 20px;
-  width: 60%
+  width: 60%;
+  padding-bottom: 100%;
+  padding-top: 0;
+  background-color: #f1f7f9;
 }
 
 .logo{
@@ -35,4 +39,20 @@
 .nav{
   background-color: white;
   border: 1px, solid, gray;
+}
+
+.myButton{
+  float: right;
+}
+
+.myForm{
+  position: inline;
+}
+
+.navEl{
+  float: right;
+}
+
+.nav li{
+  border-right: 1px solid gray;
 }

@@ -7,10 +7,15 @@ var Search = React.createClass({
     return(
       <div>
         <nav className="nav navbar navbar-default">
-            <div className='logo'><a className="navbar-brand logo" href="#">Bench BnB</a></div>
-            <form className='navbar-form navbar-center' role="search">
-              <input type="text" className="form-control" placeholder='San Francisco, CA' />
-            </form>
+          <ul className="nav nav-tabs">
+            <li><div className='logo'><a className="navbar-brand logo" href="#">Bench BnB</a></div></li>
+            <li><form className='navbar-form navbar-center myForm' role="search">
+              <input type="text" placeholder='San Francisco, CA' />
+              <button className='navbar-right btn-navbar myButton'>Become A Host</button>
+            </form></li>
+            <li className="nav navbar-brand right">Messages</li>
+            <li className="nav navbar-brand right">Help</li>
+          </ul>
         </nav>
         <Index />
         <Map />
