@@ -10,6 +10,11 @@ class Api::BenchesController < ApplicationController
     render :show
   end
 
+  def show
+    @bench = Bench.find(params[:id])
+    render :show
+  end
+
   private
   def bench_params
     params.require('benches').permit(:description, :lat, :lng, :seating)

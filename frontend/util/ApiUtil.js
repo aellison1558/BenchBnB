@@ -9,6 +9,13 @@ var ApiUtil = {
     })
   },
 
+  fetchBench: function(id) {
+    var url = '/api/benches/' + id;
+    $.get((url), {}, function(bench){
+      ApiActions.receiveBench(bench);
+    })
+  },
+
   createBench: function(bench){
     $.post('/api/benches', {benches: bench}, function(bench){
       ApiActions.receiveBench(bench);

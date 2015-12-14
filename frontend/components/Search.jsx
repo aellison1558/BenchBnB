@@ -15,24 +15,36 @@ var Search = React.createClass({
       }
     };
   },
+  listeners: [],
 
   _updateParams: function(){
-    this.setState({params: FilterStore.all()});
+    this.setState({params: FilterStore.all()}, this._updateBenches);
   },
 
   _updateBenches: function(){
-    ApiUtil.fetchBenches(FilterStore.all());
+    ApiUtil.fetchBenches(this.state.params);
   },
 
   componentDidMount: function(){
-    FilterStore.addListener(this._updateParams);
-    FilterStore.addListener(this._updateBenches);
+    this.listeners.push(FilterStore.addListener(this._updateParams));
+  },
+
+  componentWillUnmount: function(){
+    this.listeners.forEach(function(listener) {
+      listener.remove();
+    });
   },
   clickMapHandler: function(coordinates) {
     var param = $.param({coordinates: coordinates});
     var url = '/benches/new?' + param;
     this.props.history.push(url);
   },
+
+  clickMarkerHandler: function(url) {
+    console.log(url);
+    this.props.history.push(url);
+  },
+
   render: function(){
     return(
       <div>
@@ -49,7 +61,7 @@ var Search = React.createClass({
         </nav>
         <Index />
         <Filter />
-        <Map params={this.state.params} clickMapHandler={this.clickMapHandler} />
+        <Map params={this.state.params} lat={37.7758} lng={-122.435} clickMapHandler={this.clickMapHandler} clickMarkerHandler={this.clickMarkerHandler} />
       </div>
     );
   }

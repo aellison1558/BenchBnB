@@ -31,7 +31,18 @@ BenchStore.unselectBench = function(selectedBench) {
 };
 
 BenchStore.addBench = function(bench) {
-  _benches.push(bench);
+  var idx = _benches.indexOf(bench);
+  if (idx > -1) {
+    _benches[idx] = bench;
+  } else {
+    _benches.push(bench);
+  };
+};
+
+BenchStore.find = function(id) {
+  return _benches.find(function(bench){
+    return bench.id === id;
+  });
 };
 
 BenchStore.__onDispatch = function(payload) {

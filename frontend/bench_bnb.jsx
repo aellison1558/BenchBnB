@@ -3,6 +3,7 @@ var React = require('react'),
     ApiUtil = require('./util/ApiUtil'),
     Search = require("./components/Search"),
     BenchForm = require('./components/benches/BenchForm'),
+    Show = require('./components/benches/Show'),
     ReactRouter = require('react-router'),
     Router = require('react-router').Router,
     Route = ReactRouter.Route,
@@ -24,6 +25,7 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Search}/>
     <Route path="benches/new" component={BenchForm} />
+    <Route path="benches/:benchId" component={Show} />
   </Route>
 )
 

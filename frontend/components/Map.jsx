@@ -74,7 +74,8 @@ var Map = React.createClass({
         this.markers.push(new google.maps.Marker({
           position: {lat: bench.lat, lng: bench.lng},
           map: this.map,
-          title: bench.description
+          title: bench.description,
+          url: '/benches/' + bench.id
         }));
       };
     }.bind(this));
@@ -85,12 +86,23 @@ var Map = React.createClass({
       this.markers.splice(idx, 1);
     }.bind(this));
 
+
+
+  },
+
+  _installClickMarkerHandlers: function(){
+    var clickMarkerHandler = this.props.clickMarkerHandler
+    this.markers.forEach(function(marker){
+      marker.addListener('click', function() {
+        clickMarkerHandler(marker.url);
+      });
+    })
   },
 
   componentDidMount: function(){
     var map = React.findDOMNode(this.refs.map);
     var mapOptions = {
-      center: {lat: 37.7758, lng: -122.435},
+      center: {lat: this.props.lat, lng: this.props.lng},
       zoom: 13
     };
     this.map = new google.maps.Map(map, mapOptions);
@@ -121,6 +133,7 @@ var Map = React.createClass({
     BenchStore.addListener(this._placeMarkers);
     BenchStore.addListener(this._unselectMarker);
     BenchStore.addListener(this._selectMarker);
+    BenchStore.addListener(this._installClickMarkerHandlers);
     ApiUtil.fetchBenches(this.props.params);
   },
 

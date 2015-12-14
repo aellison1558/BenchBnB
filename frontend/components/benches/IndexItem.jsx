@@ -13,8 +13,9 @@ var IndexItem = React.createClass({
   },
 
   render: function(){
+    var url = "#/benches/" + this.props.bench.id;
     return(
-      <div className='col-xs-6'><li ><a onMouseEnter={this.handleMouseOver} onMouseOut={this.handleMouseLeave} href="#">{this.props.bench.description}</a></li></div>
+      <div className='col-xs-6'><li ><a onMouseEnter={this.handleMouseOver} onMouseOut={this.handleMouseLeave} href={url}>{this.props.bench.description}</a></li></div>
     )
   }
 });
