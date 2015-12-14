@@ -1,9 +1,12 @@
 var Store = require('flux/utils').Store,
     Dispatcher = require('../dispatcher/Dispatcher'),
-    FilterConstants = require('../constants/FilterConstants');
+    FilterConstants = require('../constants/FilterConstants')
+    ApiUtil = require('../util/ApiUtil');
 
 var FilterStore = new Store(Dispatcher);
-var _filterParams = {};
+var _filterParams = {bounds: {southWest: {lat: 37.74187133792972, lng: -122.47791534423828}, northEast: {lat: 37.80971309829069, lng: -122.39208465576172}},
+minSeating: 0,
+maxSeating: 100};
 
 FilterStore.all = function(){
   var result = {}

@@ -121,7 +121,7 @@ var Map = React.createClass({
     BenchStore.addListener(this._placeMarkers);
     BenchStore.addListener(this._unselectMarker);
     BenchStore.addListener(this._selectMarker);
-    ApiUtil.fetchBenches(this.props.bounds);
+    ApiUtil.fetchBenches(this.props.params);
   },
 
   render: function(){

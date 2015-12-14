@@ -1,8 +1,8 @@
 var ApiActions = require('../actions/ApiActions');
 
 var ApiUtil = {
-  fetchBenches: function(bounds){
-    var param = $.param({bounds: bounds});
+  fetchBenches: function(params){
+    var param = $.param({bounds: params.bounds, minSeating: params.minSeating, maxSeating: params.maxSeating});
     var url = '/api/benches?' + param;
     $.get((url), {}, function(benches){
       ApiActions.receiveAll(benches);
