@@ -8,6 +8,14 @@ var ApiActions = {
       benches: benches
     })
   },
+
+  receiveBench: function(bench) {
+    Dispatcher.dispatch({
+      actionType: BenchConstants.BENCH_RECEIVED,
+      bench: bench
+    })
+  },
+
   mouseOver: function(bench) {
     Dispatcher.dispatch({
       actionType: BenchConstants.BENCH_SELECTED,

@@ -30,6 +30,10 @@ BenchStore.unselectBench = function(selectedBench) {
   })
 };
 
+BenchStore.addBench = function(bench) {
+  _benches.push(bench);
+};
+
 BenchStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case BenchConstants.BENCHES_RECEIVED:
@@ -44,6 +48,9 @@ BenchStore.__onDispatch = function(payload) {
       BenchStore.unselectBench(payload.bench);
       BenchStore.__emitChange();
       break;
+    case BenchConstants.BENCH_RECEIVED:
+      BenchStore.addBench(payload.bench);
+      BenchStore.__emitChange();
   }
 };
 

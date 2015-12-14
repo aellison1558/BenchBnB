@@ -107,8 +107,16 @@ var Map = React.createClass({
           lng: bounds.getNorthEast().lng()
         }
       };
+
+
+
       ApiUtil.fetchBenches(paramBounds);
     }.bind(this.map));
+
+    var clickMapHandler = this.props.clickMapHandler;
+    this.map.addListener('click', function(e){
+      clickMapHandler({lat: e.latLng.lat(), lng: e.latLng.lng()});
+    });
 
     BenchStore.addListener(this._placeMarkers);
     BenchStore.addListener(this._unselectMarker);

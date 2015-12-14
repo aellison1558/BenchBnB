@@ -7,6 +7,12 @@ var ApiUtil = {
     $.get((url), {}, function(benches){
       ApiActions.receiveAll(benches);
     })
+  },
+
+  createBench: function(bench){
+    $.post('/api/benches', {benches: bench}, function(bench){
+      ApiActions.receiveBench(bench);
+    })
   }
 };
 

@@ -3,6 +3,11 @@ var React = require('react'),
     Map = require('./Map');
 
 var Search = React.createClass({
+  clickMapHandler: function(coordinates) {
+    var param = $.param({coordinates: coordinates});
+    var url = '/benches/new?' + param;
+    this.props.history.push(url);
+  },
   render: function(){
     return(
       <div>
@@ -18,7 +23,7 @@ var Search = React.createClass({
           </ul>
         </nav>
         <Index />
-        <Map />
+        <Map clickMapHandler={this.clickMapHandler} />
       </div>
     );
   }

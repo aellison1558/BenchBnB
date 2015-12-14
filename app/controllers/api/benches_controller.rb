@@ -7,12 +7,11 @@ class Api::BenchesController < ApplicationController
   def create
     @bench = Bench.new(bench_params)
     @bench.save
-    @benches = Bench.in_bounds(params[:bounds])
-    render :index
+    render :show
   end
 
   private
   def bench_params
-    params.require('benches').permit(:description, :lat, :lng)
+    params.require('benches').permit(:description, :lat, :lng, :seating)
   end
 end

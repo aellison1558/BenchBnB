@@ -8,12 +8,14 @@ var Index = React.createClass({
     return { benches: BenchStore.all() }
   },
 
+  listeners: [],
+
   _updateState: function() {
     this.setState({ benches: BenchStore.all() })
   },
 
   componentDidMount: function() {
-    this.listeners = BenchStore.addListener(this._updateState);
+    this.listeners.push(BenchStore.addListener(this._updateState));
   },
 
   componentWillUnmount: function() {
