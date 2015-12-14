@@ -1,6 +1,7 @@
 var React = require('react'),
     BenchStore = require('../stores/BenchStore'),
-    ApiUtil = require('../util/ApiUtil');
+    ApiUtil = require('../util/ApiUtil'),
+    FilterActions = require('../actions/FilterActions');
 
 var Map = React.createClass({
   markers: [],
@@ -109,8 +110,7 @@ var Map = React.createClass({
       };
 
 
-
-      ApiUtil.fetchBenches(paramBounds);
+      FilterActions.updateFilter({bounds: paramBounds});
     }.bind(this.map));
 
     var clickMapHandler = this.props.clickMapHandler;
@@ -121,11 +121,10 @@ var Map = React.createClass({
     BenchStore.addListener(this._placeMarkers);
     BenchStore.addListener(this._unselectMarker);
     BenchStore.addListener(this._selectMarker);
-    ApiUtil.fetchBenches({southWest: {lat: 37.74187133792972, lng: -122.47791534423828}, northEast: {lat: 37.80971309829069, lng: -122.39208465576172}});
+    ApiUtil.fetchBenches(this.props.bounds);
   },
 
   render: function(){
-
     return(
       <div className='map' ref='map'></div>
     );

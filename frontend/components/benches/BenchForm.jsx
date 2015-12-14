@@ -10,8 +10,8 @@ var BenchForm = React.createClass({
   getInitialState: function(){
     return {
       description: "",
-      lat: this.props.location.query.coordinates.lat,
-      lng: this.props.location.query.coordinates.lng,
+      lat: this.props.location.query.coordinates.lat || 0,
+      lng: this.props.location.query.coordinates.lng || 0,
       seating: 0
     };
   },
