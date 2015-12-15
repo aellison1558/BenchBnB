@@ -16,6 +16,14 @@ var BenchForm = React.createClass({
     };
   },
 
+
+  uploadImage: function(e) {
+    e.preventDefault
+
+    cloudinary.openUploadWidget({ cloud_name: 'dhcnfmydo', upload_preset: 'egjxbpwn'},
+      function(error, result) { console.log(error, result) });
+  },
+
   handleSubmit: function(e) {
     e.preventDefault();
 
@@ -48,6 +56,9 @@ var BenchForm = React.createClass({
 
           <label>Seating:</label>
           <input type="number" valueLink={this.linkState('seating')}></input>
+          <br/>
+
+          <button onClick={this.uploadImage} id="upload_widget_opener">Upload image</button>
           <br/>
 
           <input type="submit" value="submit"/>

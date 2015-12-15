@@ -31,6 +31,8 @@ var Show = React.createClass({
     return(
       <div>
         <a href="#/">Back to home page</a>
+        <br/>
+        <img src="https://res.cloudinary.com/dhcnfmydo/image/upload/v1450142862/kiwbpc7yaybettvtyyrn.png"/>
         <h3>Description:</h3>
         {this.state.bench.description}
 
