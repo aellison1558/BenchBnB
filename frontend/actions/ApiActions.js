@@ -1,5 +1,6 @@
 var Dispatcher = require('../dispatcher/Dispatcher'),
-    BenchConstants = require('../constants/BenchConstants');
+    BenchConstants = require('../constants/BenchConstants'),
+    ReviewConstants = require('../constants/ReviewConstants');
 
 var ApiActions = {
   receiveAll: function(benches) {
@@ -13,6 +14,20 @@ var ApiActions = {
     Dispatcher.dispatch({
       actionType: BenchConstants.BENCH_RECEIVED,
       bench: bench
+    })
+  },
+
+  receiveReview: function(review) {
+    Dispatcher.dispatch({
+      actionType: ReviewConstants.REVIEW_RECEIVED,
+      review: review
+    })
+  },
+
+  receiveAllReviews: function(reviews) {
+    Dispatcher.dispatch({
+      actionType: ReviewConstants.REVIEWS_RECEIVED,
+      reviews: reviews
     })
   },
 

@@ -11,7 +11,7 @@ class Api::BenchesController < ApplicationController
   end
 
   def show
-    @bench = Bench.find(params[:id])
+    @bench = Bench.includes(:reviews).find(params[:id])
     render :show
   end
 

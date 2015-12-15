@@ -12,4 +12,6 @@ class Bench < ActiveRecord::Base
 
     self.where(lat: (south..north), lng: (west..east) ).where(seating: (min..max))
   end
+
+  has_many :reviews
 end

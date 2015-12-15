@@ -2,7 +2,9 @@ var React = require('react'),
     Link = require('react-router').Link,
     Map = require('../ShowMap'),
     BenchStore = require('../../stores/BenchStore'),
-    ApiUtil = require('../../util/ApiUtil');
+    ApiUtil = require('../../util/ApiUtil'),
+    ReviewForm = require('../reviews/ReviewForm'),
+    ReviewIndex = require('../reviews/Index');
 
 var Show = React.createClass({
   getInitialState: function(){
@@ -26,7 +28,6 @@ var Show = React.createClass({
   },
 
   render: function(){
-
     return(
       <div>
         <a href="#/">Back to home page</a>
@@ -37,6 +38,9 @@ var Show = React.createClass({
         {this.state.bench.seating}
 
         <Map params={this.state.params} bench={this.state.bench} lat={this.state.bench.lat} lng={this.state.bench.lng}/>
+        <h3>Reviews:</h3>
+        <ReviewIndex benchId={this.props.params.benchId}/>
+        <ReviewForm benchId={this.props.params.benchId}/>
       </div>
     );
   }
